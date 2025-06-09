@@ -140,3 +140,33 @@ resource "aws_internet_gateway" "prod_igw" {
   }
 }
 
+resource "aws_nat_gateway" "dev_nat" {
+  allocation_id = aws_eip.dev_nat.id
+  subnet_id     = aws_subnet.public_subnet_1.id
+
+  tags = {
+    Name = "Dev NAT Gateway"
+    Environment = var.environment
+  }
+  
+}
+
+resource "aws_nat_gateway" "qa_nat" {
+  allocation_id = aws_eip.qa_nat.id
+  subnet_id     = aws_subnet.qa-public_subnet_1.id
+
+  tags = {
+    Name = "QA NAT Gateway"
+    Environment = var.qa_environment
+  }
+}
+
+resource "aws_nat_gateway" "prod_nat" {
+  allocation_id = aws_eip.prod_nat.id
+  subnet_id     = aws_subnet.prod_public_subnet_1.id
+
+  tags = {
+    Name = "Prod NAT Gateway"
+    Environment = var.prod_environment
+  }
+}
