@@ -55,6 +55,18 @@ resource "aws_subnet" "public_subnet_2" {
   } 
 }
 
+resource "aws_subnet" "dev_private_subnet" {
+  cidr_block = var.dev-pri-1-cidr-block
+  vpc_id = aws_vpc.Dev_vpc.id
+  availability_zone = var.dev-pri-1-az
+  map_public_ip_on_launch = false
+  tags = {
+    Name = "Dev Private Subnet"
+    Environment = var.environment
+  }
+  
+}
+
 resource "aws_subnet" "qa-public_subnet_1" {
   cidr_block = var.qa-pub-1-cidr-block
   vpc_id = aws_vpc.QA_vpc.id
@@ -92,6 +104,7 @@ resource "aws_subnet" "private_subnet_1" {
   cidr_block = var.prod-pri-1-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pri-1-az
+  map_customer_owned_ip_on_launch = false
   tags = {
     Name = "Prod Private Subnet 1"
     Environment = var.prod_environment
@@ -102,6 +115,7 @@ resource "aws_subnet" "private_subnet_2" {
   cidr_block = var.prod-pri-2-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pri-2-az
+  map_public_ip_on_launch = false
   tags = {
     Name = "Prod Private Subnet 2"
     Environment = var.prod_environment
