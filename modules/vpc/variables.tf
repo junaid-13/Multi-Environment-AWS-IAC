@@ -129,3 +129,15 @@ variable "prod_nat_eip" {
   type        = string
   default     = ""
 }
+
+variable "dev_nat_eip" {
+  description = "Elastic IP for the NAT Gateway in Development"
+  type        = string
+  default     = ""
+}
+
+variable "qa_nat_eip" {
+  description = "Elastic IP for the NAT Gateway in QA"
+  type        = string
+  default     = ""
+}
