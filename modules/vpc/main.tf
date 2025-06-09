@@ -44,16 +44,6 @@ resource "aws_subnet" "public_subnet_1" {
   }
 }
 
-resource "aws_subnet" "public_subnet_2" {
-  cidr_block = var.dev-pub-2-cidr-block
-  vpc_id = aws_vpc.Dev_vpc.id
-  availability_zone = var.dev-pub-2-az
-  map_public_ip_on_launch = true
-  tags = {
-    Name = "Dev Public Subnet 2"
-    Environment = var.environment
-  } 
-}
 
 resource "aws_subnet" "dev_private_subnet" {
   cidr_block = var.dev-pri-1-cidr-block

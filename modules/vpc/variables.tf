@@ -47,17 +47,6 @@ variable "dev-pub-1-az" {
   default = "us-east-1a"
 }
 
-variable "dev-pub-2-cidr-block" {
-  description = "CIDR block for the second public subnet"
-  type = string
-  default = "10.0.3.0/24" 
-}
-variable "dev-pub-2-az" {
-  description = "Availability Zone for the second public subnet"
-  type = string
-  default = "us-east-1c"
-}
-
 variable "dev-pri-1-cidr-block" {
   description = "CIDR block for the first private subnet"
   type = string
