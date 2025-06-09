@@ -8,11 +8,11 @@ terraform {
     required_version = ">= 1.0"
 }
 provider "aws" {
-  alias  = "us-east"
+  alias  = "us-east-1"
   region = "us-east-1"
 }
 
 provider "aws" {
-  alias  = "us-west"
+  alias  = "us-west-2"
   region = "us-west-2"
 }
