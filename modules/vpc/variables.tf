@@ -80,7 +80,7 @@ variable "prod-pub-1-cidr-block" {
 variable "prod-pub-1-az" {
   description = "Availability Zone for the first public subnet in Production"
   type = string
-  default = "us-west-2a"
+  default = "us-east-1b"
 }
 
 variable "prod-pub-2-cidr-block" {
@@ -92,7 +92,7 @@ variable "prod-pub-2-cidr-block" {
 variable "prod-pub-2-az" {
   description = "Availability Zone for the second public subnet in Production"
   type = string
-  default = "us-west-2b"
+  default = "us-east-1d"
 }
 
 variable "prod-pri-1-cidr-block" {
@@ -105,7 +105,7 @@ variable "prod-pri-1-cidr-block" {
 variable "prod-pri-1-az" {
   description = "Availability Zone for the first private subnet in Production"
   type = string
-  default = "us-west-2a"
+  default = "us-east-1b"
 
 }
 
@@ -118,5 +118,5 @@ variable "prod-pri-2-cidr-block" {
 variable "prod-pri-2-az" {
   description = "Availability Zone for the second private subnet in Production"
   type = string
-  default = "us-west-2b"
+  default = "us-east-1d"
 }
