@@ -38,6 +38,10 @@ resource "aws_subnet" "public_subnet_1" {
   vpc_id = aws_vpc.Dev_vpc.id
   availability_zone = var.dev-pub-1-az
   map_public_ip_on_launch = true
+  tags = {
+    Name = "Dev Public Subnet 1"
+    Environment = var.environment
+  }
 }
 
 resource "aws_subnet" "public_subnet_2" {
@@ -45,6 +49,10 @@ resource "aws_subnet" "public_subnet_2" {
   vpc_id = aws_vpc.Dev_vpc.id
   availability_zone = var.dev-pub-2-az
   map_public_ip_on_launch = true
+  tags = {
+    Name = "Dev Public Subnet 2"
+    Environment = var.environment
+  } 
 }
 
 resource "aws_subnet" "qa-public_subnet_1" {
@@ -52,7 +60,10 @@ resource "aws_subnet" "qa-public_subnet_1" {
   vpc_id = aws_vpc.QA_vpc.id
   availability_zone = var.qa-pub-1-az
   map_public_ip_on_launch = true
-  
+  tags = {
+    Name = "QA Public Subnet 1"
+    Environment = var.qa_environment
+  }
 }
 
 resource "aws_subnet" "prod_public_subnet_1" {
@@ -60,7 +71,10 @@ resource "aws_subnet" "prod_public_subnet_1" {
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pub-1-az
   map_public_ip_on_launch = true
-  
+  tags = {
+    Name = "Prod Public Subnet 1"
+    Environment = var.prod_environment
+  }
 }
 
 resource "aws_subnet" "prod_public_subnet_2" {
@@ -68,17 +82,28 @@ resource "aws_subnet" "prod_public_subnet_2" {
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pub-2-az
   map_public_ip_on_launch = true
-  
+  tags = {
+    Name = "Prod Public Subnet 2"
+    Environment = var.prod_environment
+  }
 }
 
 resource "aws_subnet" "private_subnet_1" {
   cidr_block = var.prod-pri-1-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pri-1-az
+  tags = {
+    Name = "Prod Private Subnet 1"
+    Environment = var.prod_environment
+  }
 }
 
 resource "aws_subnet" "private_subnet_2" {
   cidr_block = var.prod-pri-2-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pri-2-az
+  tags = {
+    Name = "Prod Private Subnet 2"
+    Environment = var.prod_environment
+  }
 }
