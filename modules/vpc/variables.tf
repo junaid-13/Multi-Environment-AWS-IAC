@@ -123,3 +123,9 @@ variable "prod-pri-2-az" {
   type = string
   default = "us-east-1d"
 }
+
+variable "prod_nat_eip" {
+  description = "Elastic IP for the NAT Gateway in Production"
+  type        = string
+  default     = ""
+}

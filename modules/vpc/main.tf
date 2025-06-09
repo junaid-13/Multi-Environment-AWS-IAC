@@ -162,7 +162,7 @@ resource "aws_nat_gateway" "qa_nat" {
 }
 
 resource "aws_nat_gateway" "prod_nat" {
-  allocation_id = aws_eip.prod_nat.id
+  allocation_id = aws_eip.prod_nat_eip.id
   subnet_id     = aws_subnet.prod_public_subnet_1.id
 
   tags = {
