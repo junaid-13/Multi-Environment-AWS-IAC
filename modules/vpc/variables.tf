@@ -112,7 +112,7 @@ variable "prod-pri-1-az" {
 variable "prod-pri-2-cidr-block" {
   description = "CIDR block for the second private subnet in Production"
   type = string
-  default = "198.0.2.0/24"
+  default = "198.0.4.0/24"
 }
 
 variable "prod-pri-2-az" {
