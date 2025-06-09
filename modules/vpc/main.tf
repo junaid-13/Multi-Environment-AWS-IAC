@@ -112,3 +112,31 @@ resource "aws_subnet" "private_subnet_2" {
   }
 }
 
+resource "aws_internet_gateway" "dev_igw" {
+  vpc_id = aws_vpc.Dev_vpc.id
+
+  tags = {
+    Name = "Dev Internet Gateway"
+    Environment = var.environment
+  }
+}
+
+
+resource "aws_internet_gateway" "qa_igw" {
+  vpc_id = aws_vpc.QA_vpc.id
+
+  tags = {
+    Name = "QA Internet Gateway"
+    Environment = var.qa_environment
+  }
+}
+
+resource "aws_internet_gateway" "prod_igw" {
+  vpc_id = aws_vpc.prod_vpc.id
+
+  tags = {
+    Name = "Prod Internet Gateway"
+    Environment = var.prod_environment
+  }
+}
+
