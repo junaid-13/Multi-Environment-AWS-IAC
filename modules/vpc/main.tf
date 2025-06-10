@@ -258,3 +258,45 @@ resource "aws_route_table_association" "prod_public_subnet_1_association" {
   subnet_id      = aws_subnet.prod_public_subnet_1.id
   route_table_id = aws_route_table.prod_public_rt.id
 }
+
+resource "aws_route_table" "dev_private_rt" {
+  vpc_id = aws_vpc.Dev_vpc.id
+
+  tags = {
+    Name = "Dev Private Route Table"
+    Environment = var.environment
+  }
+}
+
+resource "aws_route_table" "qa_private_rt" {
+  vpc_id = aws_vpc.QA_vpc.id
+
+  tags = {
+    Name = "QA Private Route Table"
+    Environment = var.qa_environment
+  }
+}
+
+resource "aws_route_table" "prod_private_rt" {
+  vpc_id = aws_vpc.prod_vpc.id
+
+  tags = {
+    Name = "Prod Private Route Table"
+    Environment = var.prod_environment
+  }
+}
+
+resource "aws_route_table_association" "dev_private_subnet_association" {
+  subnet_id      = aws_subnet.dev_private_subnet.id
+  route_table_id = aws_route_table.dev_private_rt.id
+}
+
+resource "aws_route_table_association" "qa_private_subnet_association" {
+  subnet_id      = aws_subnet.qa_private_subnet.id
+  route_table_id = aws_route_table.qa_private_rt.id
+}
+
+resource "aws_route_table_association" "prod_private_subnet_association" {
+  subnet_id      = aws_subnet.prod_private_subnet.id
+  route_table_id = aws_route_table.prod_private_rt.id
+}
