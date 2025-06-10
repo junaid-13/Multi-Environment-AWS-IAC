@@ -179,7 +179,7 @@ resource "aws_nat_gateway" "dev_nat" {
 }
 
 resource "aws_nat_gateway" "qa_nat" {
-  allocation_id = aws_eip.qa_nat.id
+  allocation_id = aws_eip.qa_nat_eip.id
   subnet_id     = aws_subnet.qa-public_subnet_1.id
 
   tags = {
