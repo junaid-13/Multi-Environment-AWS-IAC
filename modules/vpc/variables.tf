@@ -141,3 +141,43 @@ variable "qa_nat_eip" {
   type        = string
   default     = ""
 }
+
+variable "dev_public_rt" {
+  description = "Route table for the public subnet in Development"
+  type        = string
+  default     = "DevPublicRouteTable"
+}
+
+variable "qa_public_rt" {
+  description = "Route table for the public subnet in QA"
+  type        = string
+  default     = "QAPublicRouteTable"
+  
+}
+
+variable "prod_public_rt" {
+  description = "Route table for the public subnet in Production"
+  type        = string
+  default     = "ProdPublicRouteTable"
+  
+}
+
+variable "dev_private_rt" {
+  description = "Route table for the private subnet in Development"
+  type        = string
+  default     = "DevPrivateRouteTable"
+}
+
+variable "qa_private_rt" {
+  description = "Route table for the private subnet in QA"
+  type        = string
+  default     = "QAPrivateRouteTable"
+  
+}
+
+variable "prod_private_rt" {
+  description = "Route table for the private subnet in Production"
+  type        = string
+  default     = "ProdPrivateRouteTable"
+
+}
