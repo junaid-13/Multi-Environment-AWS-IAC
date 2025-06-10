@@ -2,6 +2,7 @@ resource "aws_vpc" "Dev_vpc" {
   cidr_block = var.dev_vpc_cidr
   enable_dns_support = true
   enable_dns_hostnames = true
+  
 
   tags = {
     Name = "Dev VPC"
@@ -38,6 +39,7 @@ resource "aws_subnet" "public_subnet_1" {
   vpc_id = aws_vpc.Dev_vpc.id
   availability_zone = var.dev-pub-1-az
   map_public_ip_on_launch = true
+
   tags = {
     Name = "Dev Public Subnet 1"
     Environment = var.environment
@@ -120,7 +122,6 @@ resource "aws_internet_gateway" "dev_igw" {
     Environment = var.environment
   }
 }
-
 
 resource "aws_internet_gateway" "qa_igw" {
   vpc_id = aws_vpc.QA_vpc.id
@@ -223,4 +224,37 @@ resource "aws_route_table" "prod_public_rt" {
     Name = "Prod Public Route Table"
     Environment = var.prod_environment
   }
+}
+
+resource "aws_route" "dev-route-1-from-igw-to-public-subnet" {
+  route_table_id         = aws_route_table.dev_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.dev_igw.id
+}
+
+resource "aws_route" "qa-route-1-from-igw-to-public-subnet" {
+  route_table_id         = aws_route_table.qa_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.qa_igw.id 
+}
+
+resource "aws_route" "prod-route-1-from-igw-to-public-subnet" {
+  route_table_id         = aws_route_table.prod_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.prod_igw.id
+}
+
+resource "aws_route_table_association" "dev_public_subnet_1_association" {
+  subnet_id      = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.dev_public_rt.id
+}
+
+resource "aws_route_table_association" "qa_public_subnet_1_association" {
+  subnet_id      = aws_subnet.qa-public_subnet_1.id
+  route_table_id = aws_route_table.qa_public_rt.id
+}
+
+resource "aws_route_table_association" "prod_public_subnet_1_association" {
+  subnet_id      = aws_subnet.prod_public_subnet_1.id
+  route_table_id = aws_route_table.prod_public_rt.id
 }
