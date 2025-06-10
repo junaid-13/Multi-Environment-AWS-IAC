@@ -197,3 +197,30 @@ resource "aws_nat_gateway" "prod_nat" {
     Environment = var.prod_environment
   }
 }
+
+resource "aws_route_table" "dev_public_rt" {
+  vpc_id = aws_vpc.Dev_vpc.id
+
+  tags = {
+    Name = "Dev Public Route Table"
+    Environment = var.environment
+  }
+}
+
+resource "aws_route_table" "qa_public_rt" {
+  vpc_id = aws_vpc.QA_vpc.id
+
+  tags = {
+    Name = "QA Public Route Table"
+    Environment = var.qa_environment
+  }
+}
+
+resource "aws_route_table" "prod_public_rt" {
+  vpc_id = aws_vpc.prod_vpc.id
+
+  tags = {
+    Name = "Prod Public Route Table"
+    Environment = var.prod_environment
+  }
+}
