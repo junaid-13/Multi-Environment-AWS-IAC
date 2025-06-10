@@ -140,6 +140,33 @@ resource "aws_internet_gateway" "prod_igw" {
   }
 }
 
+resource "aws_eip" "dev_nat_eip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "Dev NAT EIP"
+    Environment = var.environment
+  }
+}
+
+resource "aws_eip" "qa_nat_eip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "QA NAT EIP"
+    Environment = var.qa_environment
+  }
+}
+
+resource "aws_eip" "prod_nat_eip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "Prod NAT EIP"
+    Environment = var.prod_environment
+  }
+}
+
 resource "aws_nat_gateway" "dev_nat" {
   allocation_id = aws_eip.dev_nat_eip.id
   subnet_id     = aws_subnet.public_subnet_1.id
