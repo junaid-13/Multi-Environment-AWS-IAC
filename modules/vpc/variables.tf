@@ -67,12 +67,26 @@ variable "qa-pub-1-cidr-block" {
   default = "125.0.1.0/24"
 }
 
+variable "qa-pri-1-cidr-block" {
+  description = "CIDR block for the first private subnet in QA"
+  type = string
+  default = "125.0.2.0/24"
+
+}
+
+
 variable "qa-pub-1-az" {
   description = "Availability Zone for the first public subnet in QA"
   type = string
   default = "us-east-1a"
 }
 
+variable "qa-pri-1-az" {
+  description = "Availability Zone for the first private subnet in QA"
+  type = string
+  default = "us-east-1b"
+  
+}
 variable "prod-pub-1-cidr-block" {
   description = "CIDR block for the first public subnet in Production"
   type = string

@@ -70,6 +70,18 @@ resource "aws_subnet" "qa-public_subnet_1" {
   }
 }
 
+resource "aws_subnet" "qa-private_subnet" {
+  cidr_block = var.qa-pri-1-cidr-block
+  vpc_id = aws_vpc.QA_vpc.id
+  availability_zone = var.qa-pri-1-az
+  map_public_ip_on_launch = false
+  tags = {
+    Name = "QA Private Subnet"
+    Environment = var.qa_environment
+  }
+  
+}
+
 resource "aws_subnet" "prod_public_subnet_1" {
   cidr_block = var.prod-pub-1-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
