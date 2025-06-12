@@ -70,7 +70,7 @@ resource "aws_subnet" "qa-public_subnet_1" {
   }
 }
 
-resource "aws_subnet" "qa-private_subnet" {
+resource "aws_subnet" "qa_private_subnet" {
   cidr_block = var.qa-pri-1-cidr-block
   vpc_id = aws_vpc.QA_vpc.id
   availability_zone = var.qa-pri-1-az

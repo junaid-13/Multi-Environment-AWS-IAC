@@ -7,7 +7,7 @@ output "qa_vpc_id" {
 }
 
 output "prod_vpc_id" {
-  value = aws_vpc.Prod_vpc.id
+  value = aws_vpc.prod_vpc.id
 }
 
 output "dev_igw_id" {
