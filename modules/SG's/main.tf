@@ -1,7 +1,7 @@
 resource "aws_security_group" "dev-public-sg" {
     name        = var.dev_public_sg_name
     description = "Public security group for the dev environment"
-    vpc_id      = aws_vpc.Dev_vpc.id
+    vpc_id      = var.dev_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -23,7 +23,7 @@ resource "aws_security_group" "dev-public-sg" {
 resource "aws_security_group" "dev-private-sg" {
     name        = var.dev_private_sg_name
     description = "Private security group for the dev environment"
-    vpc_id      = aws_vpc.Dev_vpc.id
+    vpc_id      = aws_vpc.dev_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -46,7 +46,7 @@ resource "aws_security_group" "dev-private-sg" {
 resource "aws_security_group" "qa_public_sg" {
     name        = var.qa_public_sg_name
     description = "Public security group for the QA environment"
-    vpc_id      = aws_vpc.QA_vpc.id
+    vpc_id      = var.qa_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -68,7 +68,7 @@ resource "aws_security_group" "qa_public_sg" {
 resource "aws_security_group" "qa_private_sg" {
     name        = var.qa_private_sg_name
     description = "Private security group for the QA environment"
-    vpc_id      = aws_vpc.QA_vpc.id
+    vpc_id      = aws_vpc.qa_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -89,7 +89,7 @@ resource "aws_security_group" "qa_private_sg" {
 resource "aws_security_group" "prod_public_sg" {
     name        = var.prod_public_sg_name
     description = "Public security group for the prod environment"
-    vpc_id      = aws_vpc.Prod_vpc.id
+    vpc_id      = var.prod_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -110,7 +110,7 @@ resource "aws_security_group" "prod_public_sg" {
 resource "aws_security_group" "prod_private_sg" {
     name        = var.prod_private_sg_name
     description = "Private security group for the prod environment"
-    vpc_id      = aws_vpc.Prod_vpc.id
+    vpc_id      = var.prod_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -142,4 +142,3 @@ resource "aws_security_group" "prod_private_sg" {
         Name        = var.prod_private_sg_name
     }
 }
-
