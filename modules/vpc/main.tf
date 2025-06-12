@@ -256,6 +256,14 @@ resource "aws_route" "prod-route-1-from-igw-to-public-subnet" {
   gateway_id             = aws_internet_gateway.prod_igw.id
 }
 
+/*
+resource "aws_route" "prod-route-2-from-igw-to-public-subnet" {
+  route_table_id         = aws_route_table.prod_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.prod_igw.id
+}
+*/
+
 resource "aws_route_table_association" "dev_public_subnet_1_association" {
   subnet_id      = aws_subnet.public_subnet_1.id
   route_table_id = aws_route_table.dev_public_rt.id
@@ -269,6 +277,12 @@ resource "aws_route_table_association" "qa_public_subnet_1_association" {
 resource "aws_route_table_association" "prod_public_subnet_1_association" {
   subnet_id      = aws_subnet.prod_public_subnet_1.id
   route_table_id = aws_route_table.prod_public_rt.id
+}
+
+resource "aws_route_table_association" "prod_public_subnet_2_association" {
+  subnet_id      = aws_subnet.prod_public_subnet_2.id
+  route_table_id = aws_route_table.prod_public_rt.id
+  
 }
 
 resource "aws_route_table" "dev_private_rt" {
@@ -308,7 +322,12 @@ resource "aws_route_table_association" "qa_private_subnet_association" {
   route_table_id = aws_route_table.qa_private_rt.id
 }
 
-resource "aws_route_table_association" "prod_private_subnet_association" {
+resource "aws_route_table_association" "prod_private_subnet_1_association" {
   subnet_id      = aws_subnet.prod_private_subnet_1.id
+  route_table_id = aws_route_table.prod_private_rt.id
+}
+
+resource "aws_route_table_association" "prod_private_subnet_2_association" {
+  subnet_id      = aws_subnet.prod_private_subnet_2.id
   route_table_id = aws_route_table.prod_private_rt.id
 }
