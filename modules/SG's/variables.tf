@@ -77,3 +77,15 @@ variable "prod-pri-2-cidr-block" {
   type = string
   default = "198.0.4.0/24"
 }
+
+variable "dev_vpc_id" {
+  type = string
+}
+
+variable "qa_vpc_id" {
+  type = string
+}
+
+variable "prod_vpc_id" {
+  type = string
+}
