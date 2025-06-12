@@ -115,7 +115,7 @@ resource "aws_subnet" "prod_private_subnet_1" {
   }
 }
 
-resource "aws_subnet" "private_subnet_2" {
+resource "aws_subnet" "prod_private_subnet_2" {
   cidr_block = var.prod-pri-2-cidr-block
   vpc_id = aws_vpc.prod_vpc.id
   availability_zone = var.prod-pri-2-az
