@@ -256,13 +256,6 @@ resource "aws_route" "prod-route-1-from-igw-to-public-subnet" {
   gateway_id             = aws_internet_gateway.prod_igw.id
 }
 
-/*
-resource "aws_route" "prod-route-2-from-igw-to-public-subnet" {
-  route_table_id         = aws_route_table.prod_public_rt.id
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.prod_igw.id
-}
-*/
 
 resource "aws_route_table_association" "dev_public_subnet_1_association" {
   subnet_id      = aws_subnet.public_subnet_1.id
@@ -330,4 +323,28 @@ resource "aws_route_table_association" "prod_private_subnet_1_association" {
 resource "aws_route_table_association" "prod_private_subnet_2_association" {
   subnet_id      = aws_subnet.prod_private_subnet_2.id
   route_table_id = aws_route_table.prod_private_rt.id
+}
+
+resource "aws_route" "dev-route-1-from-public-1-to-nat-gateway" {
+  route_table_id         = aws_route_table.dev_private_rt.id
+  destination_cidr_block = "10.0.1.0/24"
+  nat_gateway_id         = aws_nat_gateway.dev_nat.id
+}
+
+resource "aws_route" "qa-route-1-from-public-1-to-nat-gateway" {
+  route_table_id         = aws_route_table.qa_private_rt.id
+  destination_cidr_block = "125.0.1.0/24"
+  nat_gateway_id         = aws_nat_gateway.qa_nat.id
+}
+
+resource "aws_route" "prod-route-1-from-public-1-to-nat-gateway" {
+  route_table_id         = aws_route_table.prod_private_rt.id
+  destination_cidr_block = "198.0.1.0/24"
+  nat_gateway_id         = aws_nat_gateway.prod_nat.id
+}
+
+resource "aws_route" "prod-route-2-from-public-2-to-nat-gateway" {
+  route_table_id         = aws_route_table.prod_private_rt.id
+  destination_cidr_block = "198.0.3.0/24"
+  nat_gateway_id         = aws_nat_gateway.prod_nat.id
 }
