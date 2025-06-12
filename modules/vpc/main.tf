@@ -309,6 +309,6 @@ resource "aws_route_table_association" "qa_private_subnet_association" {
 }
 
 resource "aws_route_table_association" "prod_private_subnet_association" {
-  subnet_id      = aws_subnet.prod_private_subne_1.id
+  subnet_id      = aws_subnet.prod_private_subnet_1.id
   route_table_id = aws_route_table.prod_private_rt.id
 }
