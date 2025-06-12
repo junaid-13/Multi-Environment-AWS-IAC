@@ -131,7 +131,6 @@ resource "aws_security_group" "prod_private_sg" {
         protocol = "-1"
         cidr_blocks = [var.prod-pub-1-cidr-block]
     }
-
     egress {
         from_port = 0
         to_port = 0
