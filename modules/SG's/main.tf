@@ -23,7 +23,7 @@ resource "aws_security_group" "dev-public-sg" {
 resource "aws_security_group" "dev-private-sg" {
     name        = var.dev_private_sg_name
     description = "Private security group for the dev environment"
-    vpc_id      = aws_vpc.dev_vpc_id
+    vpc_id      = var.dev_vpc_id
     ingress {
         from_port = 22
         to_port = 22
@@ -68,7 +68,7 @@ resource "aws_security_group" "qa_public_sg" {
 resource "aws_security_group" "qa_private_sg" {
     name        = var.qa_private_sg_name
     description = "Private security group for the QA environment"
-    vpc_id      = aws_vpc.qa_vpc_id
+    vpc_id      = var.qa_vpc_id
     ingress {
         from_port = 22
         to_port = 22
